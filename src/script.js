@@ -13,6 +13,7 @@ const html_income_list = document.getElementById("incomeList");
 const html_expense_list = document.getElementById("expenseList");
 const html_balance = document.getElementById("balance");
 
+let balance = 0;
 
 function button_click(income_or_expense){
     // Hämtar värdena som användaren skrivit in
@@ -36,14 +37,32 @@ function button_click(income_or_expense){
             console.log("Inkomst")
             console.log(description)
             console.log(amount)
+            UpdateSaldo(income_or_expense, amount)
         }
         else if(income_or_expense == "Utgift"){
             html_expense_list.appendChild(new_element);
-            console.log("Utgift")
-            console.log(description)
-            console.log(amount)
+            console.log("Utgift");
+            console.log(description);
+            console.log(amount);
+            UpdateSaldo(income_or_expense, amount);
         }
-    }  
+    }
+}
+
+function UpdateSaldo(income_or_expense, amount){
+    if (income_or_expense == "Inkomst"){
+        balance += Number(amount);   
+        UpdateSaldoHtml();
+    }else if (income_or_expense == "Utgift"){
+        balance -= Number(amount);
+        UpdateSaldoHtml();
+    }
+}
+
+function UpdateSaldoHtml(){
+    html_balance.innerHTML = "";
+    html_balance.innerHTML = balance;
+    console.log(balance)
 }
 
 html_income_button.addEventListener("click", () => {
@@ -53,7 +72,3 @@ html_income_button.addEventListener("click", () => {
 html_expense_button.addEventListener("click", () => {
     button_click("Utgift")
 })
-
-
-
-
