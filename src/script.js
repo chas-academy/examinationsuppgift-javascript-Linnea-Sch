@@ -19,26 +19,41 @@ function button_click(income_or_expense){
     description = html_description_input.value;
     amount = html_amount_input.value;
 
-    // Skapar ett nytt html-element med rätt text
-    const new_element = document.createElement('p');
-    new_element.innerHTML = description + " - " + amount + " kr (" + income_or_expense + ")"
-    
-    // lägger in det nya html-elementet i rätt lista baserat på 
-    if (income_or_expense == "Inkomst"){
-        html_income_list.appendChild(new_element);
-    }
-    else if(income_or_expense == "Utgift"){
-        html_expense_list.appendChild(new_element);
-    }
+    if (description == "" || amount == "" || isNaN(amount)){
+        // felhantering, som en fin text som dyker upp eller liknande
+        console.log("Input-fälten är felaktigt ifyllda")
+        console.log(description)
+        console.log(amount)
+        console.log(isNaN(amount))
+    }else{
+        // Skapar ett nytt html-element med rätt text
+        const new_element = document.createElement('p');
+        new_element.innerHTML = description + " - " + amount + " kr (" + income_or_expense + ")"
         
+        // lägger in det nya html-elementet i rätt lista 
+        if (income_or_expense == "Inkomst"){
+            html_income_list.appendChild(new_element);
+            console.log("Inkomst")
+            console.log(description)
+            console.log(amount)
+        }
+        else if(income_or_expense == "Utgift"){
+            html_expense_list.appendChild(new_element);
+            console.log("Utgift")
+            console.log(description)
+            console.log(amount)
+        }
+    }  
 }
 
 html_income_button.addEventListener("click", () => {
     button_click("Inkomst")
 })
 
-html_income_button.addEventListener("click", () => {
+html_expense_button.addEventListener("click", () => {
     button_click("Utgift")
 })
+
+
 
 
