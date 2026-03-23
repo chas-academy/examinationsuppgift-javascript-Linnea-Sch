@@ -63,8 +63,14 @@ function UpdateSaldoHtml(){
     html_balance.innerHTML = "";
     html_balance.innerHTML = balance;
     console.log(balance)
+
+    UX_reset();
 }
 
+function UX_reset(){
+    html_description_input.value = "";
+    html_amount_input.value = "";
+}
 html_income_button.addEventListener("click", () => {
     button_click("Inkomst")
 })
