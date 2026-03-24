@@ -28,7 +28,7 @@ function button_click(income_or_expense){
         console.log(isNaN(amount))
     }else{
         // Skapar ett nytt html-element med rätt text
-        const new_element = document.createElement('p');
+        const new_element = document.createElement('li');
         new_element.innerHTML = description + " - " + amount + " kr (" + income_or_expense + ")"
         
         // lägger in det nya html-elementet i rätt lista 
